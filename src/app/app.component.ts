@@ -17,7 +17,15 @@ export class AppComponent implements OnInit, AfterViewInit {
     message: new FormControl(''),
   })
   ngOnInit() {
+    const section1 = document.querySelector('.logo');
 
+    window.onscroll = () => {
+      if (window.scrollY > 10) {
+        section1?.classList.add('section1');
+      } else {
+        section1?.classList.remove('section1');
+      }
+    }
   }
 addClass() {
 if(this.contactForm.controls['firstName'].value === null || this.contactForm.controls['firstName'].value === null) {
@@ -35,14 +43,5 @@ if(this.contactForm.controls['lastName'].value === null || this.contactForm.cont
 }
   ngAfterViewInit() {
     this.addClass();
-    const section1 = document.querySelector('.section1');
-
-    window.onscroll = () => {
-      if (window.scrollY > 100) {
-        section1?.classList.add('section1');
-      } else {
-        section1?.classList.remove('section1');
-      }
-    }
   }
 }
